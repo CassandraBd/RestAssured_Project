@@ -1,5 +1,6 @@
 package day2;
 
+import io.restassured.http.ContentType;
 import test_util.SpartanNoAuthBaseTest;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
@@ -26,5 +27,7 @@ public class SpartanTest_QueryParam  extends  SpartanNoAuthBaseTest{
         // print the totalElement field value from the response
         System.out.println("response.path(\"totalElement\") = "
                 + response.path("totalElement"));
+
+
     }
 }

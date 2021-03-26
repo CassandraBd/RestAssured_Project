@@ -39,12 +39,23 @@ public class SpartanTest_PathVariablesQueryParam extends SpartanNoAuthBaseTest {
 
     }
 
-    @DisplayName("logging the resquest")
+    @DisplayName("logging the request")
     @Test
     public void getOneSpartanWithLog(){
         Response response =
                 given()
-                        .log().all()
+                          .log().all() // this will log the response
+                      //   ### Logging the Request
+                      //   You can log each and every part of the request in the console by adding log
+                      //   level in `given` part of the request.
+                     //   .log().uri() // just for the request url
+                     //   .log().body() // for logging request body
+                     //   .log().params() // logging only request parameters
+                     //   .log().method() // just log the http method
+                     //   .log().ifValidationFails() // only log the request if validation in the section has failed
+                     //   .log().headers()
+                     //   .log().ifError // anything not 2xx status is seen as error for this method
+                     //   .log()ifStatusCodeIsEqualTo(200)
                         .accept("application/json")
                         .pathParam("id", 16).
                 when()
