@@ -4,6 +4,9 @@ import io.restassured.RestAssured;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 public abstract class SpartanNoAuthBaseTest {
 
     @BeforeAll
@@ -18,5 +21,7 @@ public abstract class SpartanNoAuthBaseTest {
     public static void cleanup(){
         RestAssured.reset();
     }
+
+
 
 }
