@@ -20,6 +20,13 @@ public class LibraryAppBaseTest {
         baseURI  = "http://library1.cybertekschool.com" ;
         basePath = "/rest/v1" ;
         librarianToken = getToken( "librarian69@library", "KNPXrm3S");
+
+        // DB Connection info
+        String url = ConfigurationReader.getProperty("library1.database.url");
+        String username = ConfigurationReader.getProperty("library1.database.username") ;
+        String password = ConfigurationReader.getProperty("library1.database.password") ;
+        DB_Utility.createConnection(url,username, password);
+
     }
 
     public static String getToken(String username, String password){
@@ -48,7 +55,9 @@ public class LibraryAppBaseTest {
 
     @AfterAll
     public static void cleanup(){
+
         reset();
+        DB_Utility.destroy();
     }
 
 

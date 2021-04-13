@@ -19,11 +19,18 @@ public abstract class SpartanNoAuthBaseTest {
         RestAssured.baseURI = "http://100.26.232.232:8000";
         //  RestAssured.port = 8000; can do but dont need to
         RestAssured.basePath = "/api";
+
+        String url = ConfigurationReader.getProperty("spartan.database.url");
+        String username = ConfigurationReader.getProperty("spartan.database.username");
+        String password = ConfigurationReader.getProperty("spartan.database.password");
+        DB_Utility.createConnection(url,username,password);
     }
 
     @AfterAll
     public static void cleanup(){
+
         RestAssured.reset();
+        DB_Utility.destroy();
     }
 
 
